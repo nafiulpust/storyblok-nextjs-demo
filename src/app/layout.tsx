@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { StoryblokProvider } from "@/components/StoryblokProvider";
+import Link from "next/link";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import "@/storyblok";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,12 +16,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <StoryblokProvider>
+      <html lang="en">
+        <body className="bg-blue-50">
+          <header className="bg-[#000000] p-4 sticky top-0 z-[999999]">
+            <div className="container mx-auto ">
+              <nav className="flex justify-center items-center gap-20">
+                <Link
+                  className="hover:bg-blue-500 text-white p-2 rounded-md"
+                  href={"/"}
+                >
+                  Home
+                </Link>
+                <Link
+                  className="hover:bg-blue-500 text-white p-2 rounded-md"
+                  href={"/tours"}
+                >
+                  Tours
+                </Link>
+              </nav>
+            </div>
+          </header>
+          {children}
+        </body>
+      </html>
+    </StoryblokProvider>
   );
 }
