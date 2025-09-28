@@ -5,7 +5,7 @@ export const RecommendedTour = (props: any) => {
   console.log(props);
   return (
     <div className="bg-white pt-2 px-2 pb-4 rounded-sm shadow flex flex-col gap-2">
-      <Image
+      <img
         src={props.story.content.main_image?.filename || ""}
         alt={props.story.content.name}
         className="w-full h-full object-cover"
