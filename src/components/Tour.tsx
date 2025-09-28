@@ -1,7 +1,7 @@
-import { renderRichText } from "@storyblok/react/rsc";
+import { renderRichText,storyblokEditable } from "@storyblok/react/rsc";
 export const Tour = (props: any) => {
   return (
-    <main className="container mx-auto px-4 py-32 w-full">
+    <main {...storyblokEditable(props.blok)} className="container mx-auto px-4 py-32 w-full">
       <h1 className="text-4xl font-bold">{props.blok.name}</h1>
       <img
         className="w-full object-cover my-8"
